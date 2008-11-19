@@ -2,8 +2,9 @@ JqueryRailsSlideshow - Description
 ==================================
 *Note:* The javascript used in this plugin was original posted by Jon Raasch in "this post":http://jonraasch.com/blog/a-simple-jquery-slideshow. Mad props to Jon.
 
-This is an ActionView helper to create a simple jQuery slideshow. You pass in an image directory (relative to public/images/) and the *jquery_slideshow* method generates a slideshow that loops every image in that directory. 
+This is an ActionView helper to create a simple jQuery slideshow. You pass in an image directory (relative to public/images/) and the *jquery_slideshow* method generates a slideshow that loops every image in that directory.
 
+*Make sure you place the <%= jrs_javascript %> call after <%= jquery_slideshow %>*
 
 Requirements
 ============
@@ -12,22 +13,25 @@ Requirements
 ** If you did a "script/plugin install", slideshow.css was copied to your public/stylesheets directory
 
 
-Example
-=======
+Examples
+========
+
 <pre>
 <div id="slideshow">
   # This means you've got a directory full of images located at RAILS_ROOT/public/images/home_page_slideshow
   <%= jquery_slideshow('home_page_slideshow') %>
 </div>
+<%= jrs_javascript %>
 </pre>
-# Use the default options
+
+Use the default options
 <pre><%= jrs_javascript %></pre>
 
-# To avoid conflicts with prototype
+To avoid conflicts with prototype
 <pre><%= jrs_javascript(:prototype => true) %></pre>
 
 
-TODO
+Todo
 ====
 * Search recursively through a directory for images
 * Allow an option to pass of an array of image paths
