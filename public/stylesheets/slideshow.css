@@ -1,0 +1,19 @@
+#slideshow {
+    position:relative;
+    height:310px;
+}
+
+#slideshow img {
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:8;
+}
+
+#slideshow img.active {
+    z-index:10;
+}
+
+#slideshow img.last-active {
+    z-index:9;
+}
