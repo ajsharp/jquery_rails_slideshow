@@ -19,20 +19,22 @@ module JqueryRailsSlideshow
   # <tt>:last_active</tt> - The class for the fading image
   # <tt>:cycle_time</tt>  - Miliseconds between image transitions (1000 == 1 second)
   # <tt>:transition_time</tt> - Length in miliseconds of image transition effect.
+  # <tt>:selector</tt> - The selector that will be used to advance the slideshow; defaults to 'img'
   # <tt>:prototype</tt> - If set to true, the javascript block will use jQuery's noConflict() function.
   def jrs_javascript(opts = {})
     opts[:wrap_id]      ||= 'slideshow'
     opts[:active]       ||= 'active'
     opts[:last_active]  ||= 'last-active'
     opts[:cycle_time]   ||= 4000
+    opts[:selector]     ||= 'img'
     opts[:transition_time] ||= 1000
     jq = (opts[:prototype] == true) ? 'jQuery' : '$'
     javascript_tag do
       str = <<STR
         #{"jQuery.noConflict();" if opts[:prototype]}
         function slideSwitch() {
-            var $active = (#{jq}('##{opts[:wrap_id]} img.#{opts[:active]}').length == 0) ? #{jq}('##{opts[:wrap_id]} img:last') : #{jq}('##{opts[:wrap_id]} img.#{opts[:active]}');
-            var $next = $active.next().length ? $active.next('img') : #{jq}('##{opts[:wrap_id]} img:first');
+            var $active = (#{jq}('##{opts[:wrap_id]} #{opts[:selector]}.#{opts[:active]}').length == 0) ? #{jq}('##{opts[:wrap_id]} #{opts[:selector]}:last') : #{jq}('##{opts[:wrap_id]} #{opts[:selector]}.#{opts[:active]}');
+            var $next = $active.next().length ? $active.next('#{opts[:selector]}') : #{jq}('##{opts[:wrap_id]} #{opts[:selector]}:first');
 
             $active.addClass('#{opts[:last_active]}');
 
