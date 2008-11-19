@@ -30,7 +30,7 @@ Use the default options
 To avoid conflicts with prototype
 <pre><%= jrs_javascript(:prototype => true) %></pre>
 
-Use a collection of Paperclip photos. Note the use of the *:selector* and *:wrap_id* options. *:selector* allows you to use a different DOM selector to advance the "slides" (the default is simply 'img'), while *:wrap_id* allows you to set the the wrapping element - in this case 'gallery' - whatever you want.
+Use a collection of Paperclip photos. Note the use of the *selector* and *wrap_id* options. *selector* allows you to use a different DOM selector to advance the "slides" (the default is simply 'img'), while *wrap_id* allows you to set the the wrapping element - in this case 'gallery' - whatever you want.
 <pre>
 <div id="gallery">
   <% @photo_collection.each do |photo| %>
